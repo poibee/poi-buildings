@@ -26,23 +26,23 @@
             <div class="chip-container">
               <ion-chip color="primary" *ngIf="building.wikipediaUrl" (click)="openUrl(building.wikipediaUrl)">
                 <ion-icon name="book-outline"></ion-icon>
-                <ion-label>Wiki</ion-label>
+                <ion-label class="chip-label">Wiki</ion-label>
               </ion-chip>
               <ion-chip color="secondary" *ngIf="building.wikidataId" (click)="openUrl('https://www.wikidata.org/wiki/' + building.wikidataId)">
                 <ion-icon name="server-outline"></ion-icon>
-                <ion-label>Data</ion-label>
+                <ion-label class="chip-label">Data</ion-label>
               </ion-chip>
               <ion-chip color="tertiary" *ngIf="building.openStreetMapId" (click)="openUrl('https://www.openstreetmap.org/' + building.openStreetMapId)">
                 <ion-icon name="map-outline"></ion-icon>
-                <ion-label>OSM</ion-label>
+                <ion-label class="chip-label">OSM</ion-label>
               </ion-chip>
               <ion-chip color="success" *ngIf="building.website" (click)="openUrl(building.website)">
                 <ion-icon name="globe-outline"></ion-icon>
-                <ion-label>Web</ion-label>
+                <ion-label class="chip-label">Web</ion-label>
               </ion-chip>
               <ion-chip color="warning" *ngIf="building.openingHours" (click)="showOpeningHours(building)">
                 <ion-icon name="time-outline"></ion-icon>
-                <ion-label>Hours</ion-label>
+                <ion-label class="chip-label">Hours</ion-label>
               </ion-chip>
             </div>
           </ion-card-content>
