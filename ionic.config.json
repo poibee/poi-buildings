@@ -1,0 +1,7 @@
+{
+  "name": "poi-navigator",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
