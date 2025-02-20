@@ -11,4 +11,8 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./folder/folder.page').then((m) => m.FolderPage),
   },
+  {
+    path: 'wiki-pois',
+    loadComponent: () => import('./wiki-pois/wiki-pois.page').then( m => m.WikiPoisPage)
+  },
 ];
