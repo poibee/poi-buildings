@@ -15,6 +15,9 @@
     <ion-row>
       <ion-col size="12" size-sm="6" size-md="4" size-lg="3" *ngFor="let building of famousBuildings">
         <ion-card>
+          <div class="image-container">
+            <img [src]="building.image" [alt]="building.name">
+          </div>
           <ion-card-header>
             <ion-card-title>{{ building.name }}</ion-card-title>
           </ion-card-header>
