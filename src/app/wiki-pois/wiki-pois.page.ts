@@ -1,14 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar, IonGrid, IonRow, IonCol, IonCard, IonCardHeader, IonCardTitle, IonCardContent } from '@ionic/angular/standalone';
+import { IonContent, IonHeader, IonTitle, IonToolbar, IonGrid, IonRow, IonCol, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonModal, IonButtons, IonButton, IonIcon } from '@ionic/angular/standalone';
+import { addIcons } from 'ionicons';
+import { closeOutline } from 'ionicons/icons';
 
 @Component({
   selector: 'app-wiki-pois',
   templateUrl: './wiki-pois.page.html',
   styleUrls: ['./wiki-pois.page.scss'],
   standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, IonGrid, IonRow, IonCol, IonCard, IonCardHeader, IonCardTitle, IonCardContent, CommonModule, FormsModule]
+  imports: [IonContent, IonHeader, IonTitle, IonToolbar, IonGrid, IonRow, IonCol, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonModal, IonButtons, IonButton, IonIcon, CommonModule, FormsModule]
 })
 export class WikiPoisPage implements OnInit {
   famousBuildings = [
@@ -26,7 +28,22 @@ export class WikiPoisPage implements OnInit {
     { name: 'Great Wall of China', location: 'China', image: 'https://images.unsplash.com/photo-1508804185872-d7badad00f7d?w=800&h=800&q=80' }
   ];
 
-  constructor() { }
+  selectedBuilding: { name: string; location: string; image: string; };
+  isModalOpen = false;
+
+  constructor() {
+    addIcons({ closeOutline });
+    this.selectedBuilding = this.famousBuildings[0];
+  }
+
+  openImage(building: { name: string; location: string; image: string; }) {
+    this.selectedBuilding = building;
+    this.isModalOpen = true;
+  }
+
+  closeImage() {
+    this.isModalOpen = false;
+  }
 
   ngOnInit() {
   }

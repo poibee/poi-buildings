@@ -51,3 +51,40 @@ ion-card-content {
 ion-grid {
   padding: 16px;
 }
+
+.image-container {
+  cursor: pointer;
+}
+
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  .modal-image-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    
+    img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+  }
+
+  .location-info {
+    text-align: center;
+    background: var(--ion-color-light);
+    border-radius: 8px;
+    margin: 16px 0;
+    
+    p {
+      margin: 0;
+      font-size: 1.1em;
+      color: var(--ion-color-dark);
+    }
+  }
+}
