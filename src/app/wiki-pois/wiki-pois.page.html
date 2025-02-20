@@ -15,14 +15,36 @@
     <ion-row>
       <ion-col size="12" size-sm="6" size-md="4" size-lg="3" *ngFor="let building of famousBuildings">
         <ion-card>
-          <div class="image-container" (click)="openImage(building)">
-            <img [src]="building.image" [alt]="building.name">
-          </div>
           <ion-card-header>
             <ion-card-title>{{ building.name }}</ion-card-title>
           </ion-card-header>
+          <div class="image-container" (click)="openImage(building)">
+            <img [src]="building.image" [alt]="building.name">
+          </div>
           <ion-card-content>
-            {{ building.location }}
+            <p class="location">{{ building.location }}</p>
+            <div class="chip-container">
+              <ion-chip color="primary" *ngIf="building.wikipediaUrl" (click)="openUrl(building.wikipediaUrl)">
+                <ion-icon name="book-outline"></ion-icon>
+                <ion-label>Wiki</ion-label>
+              </ion-chip>
+              <ion-chip color="secondary" *ngIf="building.wikidataId" (click)="openUrl('https://www.wikidata.org/wiki/' + building.wikidataId)">
+                <ion-icon name="server-outline"></ion-icon>
+                <ion-label>Data</ion-label>
+              </ion-chip>
+              <ion-chip color="tertiary" *ngIf="building.openStreetMapId" (click)="openUrl('https://www.openstreetmap.org/' + building.openStreetMapId)">
+                <ion-icon name="map-outline"></ion-icon>
+                <ion-label>OSM</ion-label>
+              </ion-chip>
+              <ion-chip color="success" *ngIf="building.website" (click)="openUrl(building.website)">
+                <ion-icon name="globe-outline"></ion-icon>
+                <ion-label>Web</ion-label>
+              </ion-chip>
+              <ion-chip color="warning" *ngIf="building.openingHours" (click)="showOpeningHours(building)">
+                <ion-icon name="time-outline"></ion-icon>
+                <ion-label>Hours</ion-label>
+              </ion-chip>
+            </div>
           </ion-card-content>
         </ion-card>
       </ion-col>
@@ -46,10 +68,82 @@
           <div class="modal-image-container">
             <img [src]="selectedBuilding.image">
           </div>
-          <div class="location-info ion-padding">
-            <p>{{ selectedBuilding.location }}</p>
+          <div class="building-info ion-padding">
+            <p class="location">{{ selectedBuilding.location }}</p>
+            <p class="description">{{ selectedBuilding.description }}</p>
+            <p class="coordinates" *ngIf="selectedBuilding.coordinates">
+              <strong>Coordinates:</strong> {{ selectedBuilding.coordinates.lat }}, {{ selectedBuilding.coordinates.lng }}
+            </p>
           </div>
         </div>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+
+  <!-- Opening Hours Modal -->
+  <ion-modal [isOpen]="isHoursModalOpen" (didDismiss)="closeHoursModal()">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>Opening Hours</ion-title>
+          <ion-buttons slot="end">
+            <ion-button (click)="closeHoursModal()">
+              <ion-icon name="close-outline" slot="icon-only"></ion-icon>
+            </ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="ion-padding" *ngIf="selectedBuilding?.openingHours as hours">
+        <ion-list>
+          <ion-item>
+            <ion-label>
+              <h2>Monday</h2>
+              <p>{{ hours.monday || 'Closed' }}</p>
+            </ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label>
+              <h2>Tuesday</h2>
+              <p>{{ hours.tuesday || 'Closed' }}</p>
+            </ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label>
+              <h2>Wednesday</h2>
+              <p>{{ hours.wednesday || 'Closed' }}</p>
+            </ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label>
+              <h2>Thursday</h2>
+              <p>{{ hours.thursday || 'Closed' }}</p>
+            </ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label>
+              <h2>Friday</h2>
+              <p>{{ hours.friday || 'Closed' }}</p>
+            </ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label>
+              <h2>Saturday</h2>
+              <p>{{ hours.saturday || 'Closed' }}</p>
+            </ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label>
+              <h2>Sunday</h2>
+              <p>{{ hours.sunday || 'Closed' }}</p>
+            </ion-label>
+          </ion-item>
+          <ion-item *ngIf="hours.holidays">
+            <ion-label>
+              <h2>Holidays</h2>
+              <p>{{ hours.holidays }}</p>
+            </ion-label>
+          </ion-item>
+        </ion-list>
       </ion-content>
     </ng-template>
   </ion-modal>

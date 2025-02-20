@@ -10,9 +10,11 @@ ion-card {
 
   .image-container {
     position: relative;
-    width: 100%;
-    padding-top: 100%; // This creates a 1:1 aspect ratio
+    width: 80%;
+    padding-top: 80%;
     overflow: hidden;
+    border-radius: 50%;
+    margin: 16px auto; // Increased vertical margin
 
     img {
       position: absolute;
@@ -26,12 +28,16 @@ ion-card {
   }
 
   &:hover .image-container img {
-    transform: scale(1.1);
+    transform: scale(1.1) rotate(5deg);
   }
 }
 
 ion-card-header {
-  padding-bottom: 8px;
+  padding: 16px 16px 8px;
+  
+  ion-card-title {
+    text-align: center;
+  }
 }
 
 ion-card-title {
@@ -46,6 +52,37 @@ ion-card-title {
 ion-card-content {
   color: var(--ion-color-medium);
   font-size: 0.9em;
+  text-align: center;
+  padding: 8px 16px 16px;
+
+  .location {
+    margin-bottom: 12px;
+  }
+
+  .chip-container {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+
+    ion-chip {
+      cursor: pointer;
+      transition: transform 0.2s ease;
+
+      &:hover {
+        transform: translateY(-2px);
+      }
+
+      ion-icon {
+        margin-right: 4px;
+      }
+
+      ion-label {
+        font-size: 12px;
+      }
+    }
+  }
 }
 
 ion-grid {
@@ -69,22 +106,48 @@ ion-grid {
     overflow: hidden;
     
     img {
-      max-width: 100%;
-      max-height: 100%;
-      object-fit: contain;
+      max-width: min(100%, 600px);
+      aspect-ratio: 1/1;
+      object-fit: cover;
+      border-radius: 50%;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     }
   }
 
-  .location-info {
+  .building-info {
     text-align: center;
     background: var(--ion-color-light);
     border-radius: 8px;
     margin: 16px 0;
+    padding: 16px;
     
     p {
-      margin: 0;
-      font-size: 1.1em;
-      color: var(--ion-color-dark);
+      margin: 0 0 12px;
+      
+      &:last-child {
+        margin-bottom: 0;
+      }
+      
+      &.location {
+        font-size: 1.2em;
+        font-weight: 500;
+        color: var(--ion-color-primary);
+      }
+      
+      &.description {
+        font-size: 1.1em;
+        line-height: 1.5;
+        color: var(--ion-color-dark);
+      }
+      
+      &.coordinates {
+        font-size: 0.9em;
+        color: var(--ion-color-medium);
+        
+        strong {
+          color: var(--ion-color-dark);
+        }
+      }
     }
   }
 }
