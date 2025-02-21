@@ -3,16 +3,15 @@ import { Routes } from '@angular/router';
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'folder/inbox',
+    redirectTo: 'famous-buildings',
     pathMatch: 'full',
   },
   {
-    path: 'folder/:id',
-    loadComponent: () =>
-      import('./folder/folder.page').then((m) => m.FolderPage),
+    path: 'famous-buildings',
+    loadComponent: () => import('./wiki-pois/wiki-pois.page').then(m => m.WikiPoisPage)
   },
   {
-    path: 'wiki-pois',
-    loadComponent: () => import('./wiki-pois/wiki-pois.page').then( m => m.WikiPoisPage)
+    path: 'folder/favorites',
+    loadComponent: () => import('./folder/folder.page').then((m) => m.FolderPage),
   },
 ];
