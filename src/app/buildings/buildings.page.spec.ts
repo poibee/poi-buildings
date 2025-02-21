@@ -1,12 +1,12 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { WikiPoisPage } from './wiki-pois.page';
+import { BuildingsPage } from './buildings.page';
 
-describe('WikiPoisPage', () => {
-  let component: WikiPoisPage;
-  let fixture: ComponentFixture<WikiPoisPage>;
+describe('BuildingsPage', () => {
+  let component: BuildingsPage;
+  let fixture: ComponentFixture<BuildingsPage>;
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(WikiPoisPage);
+    fixture = TestBed.createComponent(BuildingsPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

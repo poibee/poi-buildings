@@ -8,7 +8,7 @@ export const routes: Routes = [
   },
   {
     path: 'famous-buildings',
-    loadComponent: () => import('./wiki-pois/wiki-pois.page').then(m => m.WikiPoisPage)
+    loadComponent: () => import('./buildings/buildings.page').then(m => m.BuildingsPage)
   },
   {
     path: 'folder/favorites',

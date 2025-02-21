@@ -9,13 +9,13 @@ import { Building } from '../models/building.model';
 import * as countryFlagIcons from 'country-flag-icons/string/3x2';
 
 @Component({
-  selector: 'app-wiki-pois',
-  templateUrl: './wiki-pois.page.html',
-  styleUrls: ['./wiki-pois.page.scss'],
+  selector: 'app-buildings',
+  templateUrl: './buildings.page.html',
+  styleUrls: ['./buildings.page.scss'],
   standalone: true,
   imports: [IonContent, IonHeader, IonTitle, IonToolbar, IonGrid, IonRow, IonCol, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonModal, IonButtons, IonButton, IonIcon, IonChip, IonLabel, IonList, IonItem, CommonModule, FormsModule]
 })
-export class WikiPoisPage implements OnInit {
+export class BuildingsPage implements OnInit {
   famousBuildings: Building[] = [
     new Building(
       'Eiffel Tower',
