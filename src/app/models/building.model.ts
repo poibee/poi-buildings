@@ -13,6 +13,7 @@ export class Building {
     constructor(
         public name: string,
         public location: string,
+        public country: string,
         public image: string,
         public description?: string,
         public coordinates?: { lat: number; lng: number },
@@ -27,6 +28,7 @@ export class Building {
         return new Building(
             json.name,
             json.location,
+            json.country,
             json.image,
             json.description,
             json.coordinates,

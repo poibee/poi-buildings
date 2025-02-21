@@ -16,13 +16,13 @@
       <ion-col size="12" size-sm="6" size-md="4" size-lg="3" *ngFor="let building of famousBuildings">
         <ion-card>
           <ion-card-header>
-            <ion-card-title>{{ building.name }}</ion-card-title>
+              <ion-card-title>{{ building.name }}</ion-card-title>
           </ion-card-header>
           <div class="image-container" (click)="openImage(building)">
             <img [src]="building.image" [alt]="building.name">
           </div>
           <ion-card-content>
-            <p class="location">{{ building.location }}</p>
+            <p class="location">{{ building.location }}, {{ building.country }} <span class="flag-container" [innerHTML]="getCountryFlag(building.country)"></span></p>
             <div class="chip-container">
               <ion-chip color="primary" *ngIf="building.wikipediaUrl" (click)="openUrl(building.wikipediaUrl)">
                 <ion-icon name="book-outline"></ion-icon>
