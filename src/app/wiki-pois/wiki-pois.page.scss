@@ -1,8 +1,11 @@
 ion-card {
-  margin: 10px;
+  margin: 1px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s;
   overflow: hidden;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 
   &:hover {
     transform: translateY(-5px);
@@ -10,11 +13,11 @@ ion-card {
 
   .image-container {
     position: relative;
-    width: 80%;
-    padding-top: 80%;
+    width: 95%;
+    padding-top: 95%;
     overflow: hidden;
     border-radius: 50%;
-    margin: 16px auto; // Increased vertical margin
+    margin: 6px auto; // Increased vertical margin
 
     img {
       position: absolute;
@@ -33,7 +36,7 @@ ion-card {
 }
 
 ion-card-header {
-  padding: 16px 16px 8px;
+  padding: 6px 6px 3px;
   
   ion-card-title {
     text-align: center;
@@ -41,12 +44,15 @@ ion-card-header {
 }
 
 ion-card-title {
-  font-size: 1.2em;
-  font-weight: bold;
+  font-size: 1.3em;
+  font-weight: 700;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   display: block;
+  color: var(--ion-color-primary);
+  text-shadow: 0 1px 1px rgba(0,0,0,0.1);
+  letter-spacing: 0.5px;
 }
 
 .chip-container {
@@ -94,6 +100,9 @@ ion-card-title {
 }
 
 ion-card-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
   color: var(--ion-color-medium);
   font-size: 0.9em;
   text-align: center;
@@ -108,7 +117,8 @@ ion-card-content {
     justify-content: center;
     gap: 8px;
     flex-wrap: wrap;
-    margin-top: 12px;
+    margin-bottom: auto;
+    padding-bottom: 12px;
 
     ion-chip {
       cursor: pointer;
