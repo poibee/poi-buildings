@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { IonContent, IonHeader, IonTitle, IonToolbar, IonGrid, IonRow, IonCol, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonModal, IonButtons, IonButton, IonIcon, IonChip, IonLabel, IonList, IonItem } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
-import { closeOutline, bookOutline, serverOutline, mapOutline, globeOutline, timeOutline } from 'ionicons/icons';
+import { closeOutline, bookOutline, serverOutline, mapOutline, globeOutline, timeOutline, heartOutline, heart } from 'ionicons/icons';
 import { Building } from '../models/building.model';
 import * as countryFlagIcons from 'country-flag-icons/string/3x2';
 
@@ -259,6 +259,7 @@ export class BuildingsPage implements OnInit {
   selectedBuilding: Building;
   isModalOpen = false;
   isHoursModalOpen = false;
+  favorites: Set<string> = new Set();
 
   private countryToCodeMap: { [key: string]: string } = {
     'France': 'FR',
@@ -276,7 +277,7 @@ export class BuildingsPage implements OnInit {
   };
 
   constructor(private sanitizer: DomSanitizer) {
-    addIcons({ closeOutline, bookOutline, serverOutline, mapOutline, globeOutline, timeOutline });
+    addIcons({ closeOutline, bookOutline, serverOutline, mapOutline, globeOutline, timeOutline, heartOutline, heart });
     this.selectedBuilding = this.famousBuildings[0];
   }
 
@@ -301,6 +302,19 @@ export class BuildingsPage implements OnInit {
 
   openUrl(url: string) {
     window.open(url, '_blank');
+  }
+
+  toggleFavorite(event: Event, buildingName: string) {
+    event.stopPropagation();
+    if (this.favorites.has(buildingName)) {
+      this.favorites.delete(buildingName);
+    } else {
+      this.favorites.add(buildingName);
+    }
+  }
+
+  isFavorite(buildingName: string): boolean {
+    return this.favorites.has(buildingName);
   }
 
   ngOnInit() {

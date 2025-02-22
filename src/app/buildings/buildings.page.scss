@@ -36,10 +36,28 @@ ion-card {
 }
 
 ion-card-header {
-  padding: 8px 6px 12px;
+  padding: 8px 16px 12px;
   
-  ion-card-title {
-    text-align: center;
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    ion-card-title {
+      flex: 1;
+      margin-right: 8px;
+      text-align: center;
+    }
+    
+    .favorite-icon {
+      font-size: 24px;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+      
+      &:hover {
+        transform: scale(1.2);
+      }
+    }
   }
 }
 
